@@ -114,7 +114,8 @@ public class Control {
 		 * Call Back method for View
 		 * paints/repaints model of graphic objects repressing person objects in the frame 
 		 */
-		public void paintPersons(Graphics g) {
+		public void paintPersons(Graphics g) 
+		{
 			
 			//find the Person in the Model!
 			int index = 0;
@@ -153,25 +154,44 @@ public class Control {
 			}
 		}
 		
+
+		
 		//Declares Wall sprites and positions of walls
+		
+		/*
 		static Wall vWall1 = new Wall(550, 0, "SocialDistancingImages/wall2.png", true);
 		static Wall vWall2 = new Wall(200, 0, "SocialDistancingImages/wall2.png", true);
-		static Wall vWall3 = new Wall(550, 400, "SocialDistancingImages/wall2.png", true);
+		static  Wall vWall3 = new Wall(550, 400, "SocialDistancingImages/wall2.png", true);
 		static Wall vWall4 = new Wall(200, 400, "SocialDistancingImages/wall2.png", true);
 		
 		static Wall hWall1 = new Wall(620, 160, "SocialDistancingImages/wall1.png", false);
 		static Wall hWall2 = new Wall(-25, 160, "SocialDistancingImages/wall1.png", false);
 		static Wall hWall3 = new Wall(620, 400, "SocialDistancingImages/wall1.png", false);
 		static Wall hWall4 = new Wall(-25, 400, "SocialDistancingImages/wall1.png", false);
+		
 		static Wall[] walls = {vWall1, hWall1, vWall2, hWall2, vWall3, hWall3, vWall4, hWall4};
 		static Rectangle[] r = {vWall1.getBounds(), hWall1.getBounds(), vWall2.getBounds(), hWall2.getBounds(),
 				vWall3.getBounds(), hWall3.getBounds(), vWall4.getBounds(), hWall4.getBounds()};
-		
-		
+				*/
+
 		public void paintWalls(Graphics g) {
+			
+			Wall[] walls = Building.getWalls();
 
 			//draws vertical walls
-			g.drawImage(vWall1.getImage(), vWall1.getX(), vWall1.getY(), view);
+			g.drawImage(walls[2].getImage(), walls[2].getX(), walls[2].getY(), view);
+			g.drawImage(walls[2].getImage(), walls[2].getX(), walls[2].getY(), view);
+			g.drawImage(walls[4].getImage(), walls[4].getX(), walls[4].getY(), view);
+			g.drawImage(walls[6].getImage(), walls[6].getX(), walls[6].getY(), view);
+			
+			//draws horizontal walls
+			g.drawImage(walls[1].getImage(), walls[1].getX(), walls[1].getY(), view);
+			g.drawImage(walls[3].getImage(), walls[3].getX(), walls[3].getY(), view);
+			g.drawImage(walls[5].getImage(), walls[5].getX(), walls[5].getY(), view);
+			g.drawImage(walls[7].getImage(), walls[7].getX(), walls[7].getY(), view);
+			
+			/*
+		    g.drawImage(vWall1.getImage(), vWall1.getX(), vWall1.getY(), view);
 			g.drawImage(vWall2.getImage(), vWall2.getX(), vWall2.getY(), view);
 			g.drawImage(vWall3.getImage(), vWall3.getX(), vWall3.getY(), view);
 			g.drawImage(vWall4.getImage(), vWall4.getX(), vWall4.getY(), view);
@@ -181,6 +201,7 @@ public class Control {
 			g.drawImage(hWall2.getImage(), hWall2.getX(), hWall2.getY(), view);
 			g.drawImage(hWall3.getImage(), hWall3.getX(), hWall3.getY(), view);
 			g.drawImage(hWall4.getImage(), hWall4.getX(), hWall4.getY(), view);
+			*/
 			
 			//sets text color
 			g.setColor(Color.BLACK);
@@ -195,6 +216,16 @@ public class Control {
 		
 
 		public void personToWallCollision(Person p) {
+			
+			
+			Wall[] walls = Building.getWalls();
+			Rectangle[] r = {walls[0].getBounds(), walls[1].getBounds(), walls[2].getBounds(), walls[3].getBounds(),
+					walls[4].getBounds(), walls[5].getBounds(), walls[6].getBounds(), walls[7].getBounds()};
+			
+			for(int x = 0; x < 8; x++)
+			{
+				r[x] = walls[x].getBounds();
+			}
 			
 			Rectangle personRect = new Rectangle(p.x,p.y, p.width, p.height);
 			for(int i = 0; i < walls.length;i++)
