@@ -179,7 +179,7 @@ public class Control {
 			Wall[] walls = Building.getWalls();
 
 			//draws vertical walls
-			g.drawImage(walls[2].getImage(), walls[2].getX(), walls[2].getY(), view);
+			g.drawImage(walls[0].getImage(), walls[0].getX(), walls[0].getY(), view);
 			g.drawImage(walls[2].getImage(), walls[2].getX(), walls[2].getY(), view);
 			g.drawImage(walls[4].getImage(), walls[4].getX(), walls[4].getY(), view);
 			g.drawImage(walls[6].getImage(), walls[6].getX(), walls[6].getY(), view);
@@ -219,6 +219,7 @@ public class Control {
 			
 			
 			Wall[] walls = Building.getWalls();
+			
 			Rectangle[] r = {walls[0].getBounds(), walls[1].getBounds(), walls[2].getBounds(), walls[3].getBounds(),
 					walls[4].getBounds(), walls[5].getBounds(), walls[6].getBounds(), walls[7].getBounds()};
 			
