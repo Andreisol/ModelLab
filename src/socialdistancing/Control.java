@@ -10,7 +10,7 @@ public class Control {
 		String title = "Social Distance Simulation";
 		//Model and View
 		ArrayList<Person> model; //the community of Person objects	
-		Building view; //JPanel graphics window
+		Frame view; //JPanel graphics window
 		
 		// counters for "this" simulation instance
 		public int numInfected = 0;
@@ -97,7 +97,7 @@ public class Control {
 		 */
 		public void runSimulation() {
 			//Setup to the Simulation Panel/Frame
-			Building view = new Building(this, title);
+			Frame view = new Frame(this, title);
 			
 			//Setup the People
 			model = new ArrayList<Person>();
@@ -176,7 +176,7 @@ public class Control {
 
 		public void paintWalls(Graphics g) {
 			
-			Wall[] walls = Building.getWalls();
+			Wall[] walls = Frame.getWalls();
 
 			//draws vertical walls
 			g.drawImage(walls[0].getImage(), walls[0].getX(), walls[0].getY(), view);
@@ -218,7 +218,7 @@ public class Control {
 		public void personToWallCollision(Person p) {
 			
 			
-			Wall[] walls = Building.getWalls();
+			Wall[] walls = Frame.getWalls();
 			
 			Rectangle[] r = {walls[0].getBounds(), walls[1].getBounds(), walls[2].getBounds(), walls[3].getBounds(),
 					walls[4].getBounds(), walls[5].getBounds(), walls[6].getBounds(), walls[7].getBounds()};
